@@ -119,7 +119,7 @@ class UserInfoController extends Controller
                 $userInfo->dataNasc = $request->dataNasc;
                 $userInfo->genero = $request->genero;
                 $userInfo->update();
-                return $this->indexMessage(["User Info atualizado com sucesso", "success"]);
+                return $this->indexMessage(["Informações do Usuário atualizadas com sucesso", "success"]);
             }
             return $this->indexMessage(["Informações do Usuário não encontradas", "warning"]);
             
