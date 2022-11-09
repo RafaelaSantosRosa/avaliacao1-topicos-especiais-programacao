@@ -38,4 +38,8 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    protected function unauthenticated($request, \Illuminate\Auth\AuthenticationException $exception) {
+        return redirect()->route("login");
+    }
 }

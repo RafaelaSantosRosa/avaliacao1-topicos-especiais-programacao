@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserInfo;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserInfoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:web');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,6 +41,17 @@ class UserInfoController extends Controller
      */
     public function create()
     {
+        // if(Auth::check()){
+        //     $user = Auth::user();
+        //     echo "<p> $user->id <p>";
+        //     echo "<p> $user->name <p>";
+        //     echo "<p> $user->email <p>";
+        //     echo "<p> $user->password <p>";
+        // }
+        // else{
+        //     echo "<p> Sem usuário logado <p>";
+        // }
+
         return view("UserInfo/create");
     }
 
@@ -46,9 +63,10 @@ class UserInfoController extends Controller
      */
     public function store(Request $request)
     {
+        $loggedUserId = Auth::user()->id;
         try{
             $userInfo = new UserInfo();
-            $userInfo->Users_id = 1;
+            $userInfo->Users_id = $loggedUserId;
             $userInfo->status = 'A';
             $userInfo->profileImg = $request->profileImg;
             $userInfo->dataNasc = $request->dataNasc;
@@ -110,10 +128,12 @@ class UserInfoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         try{
+            $loggedUserId = Auth::user()->id;
             $userInfo = UserInfo::find($id); 
             if( isset($userInfo) ){
-                $userInfo->Users_id = 1;
+                $userInfo->Users_id = $loggedUserId;
                 $userInfo->status = 'A';
                 $userInfo->profileImg = $request->profileImg;
                 $userInfo->dataNasc = $request->dataNasc;

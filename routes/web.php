@@ -61,3 +61,6 @@ Route::delete('userinfo/{id}', "App\Http\Controllers\UserInfoController@destroy"
 
 
 // Route::resource('produto', "App\Http\Controllers\ProdutoController");
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
