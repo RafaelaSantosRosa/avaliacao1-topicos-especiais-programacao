@@ -42,6 +42,10 @@ Route::get('userinfo/{id}/edit', "App\Http\Controllers\UserInfoController@edit")
 Route::put('userinfo/{id}', "App\Http\Controllers\UserInfoController@update")->name("userinfo.update");
 Route::delete('userinfo/{id}', "App\Http\Controllers\UserInfoController@destroy")->name("userinfo.destroy");
 
+
+//Rota Endereco
+Route::resource('endereco',  "App\Http\Controllers\EnderecoController");
+
 // use App\Models\Produto;
 // use Illuminate\Support\Facades\DB;
 

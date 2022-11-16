@@ -41,17 +41,6 @@ class UserInfoController extends Controller
      */
     public function create()
     {
-        // if(Auth::check()){
-        //     $user = Auth::user();
-        //     echo "<p> $user->id <p>";
-        //     echo "<p> $user->name <p>";
-        //     echo "<p> $user->email <p>";
-        //     echo "<p> $user->password <p>";
-        // }
-        // else{
-        //     echo "<p> Sem usuário logado <p>";
-        // }
-
         return view("UserInfo/create");
     }
 
@@ -76,7 +65,6 @@ class UserInfoController extends Controller
             return $this->indexMessage([$th->getMessage(), "danger"]);
         }        
         return $this->indexMessage(["Informações do Usuário cadastradas com sucesso", "success"]);
-        // return \Redirect::route('userinfo.show', 1);
     }
 
     /**
